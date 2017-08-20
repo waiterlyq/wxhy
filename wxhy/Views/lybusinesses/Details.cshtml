@@ -1,0 +1,42 @@
+﻿@model wxhy.Models.lybusiness
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>lybusiness</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.businessname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.businessname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.logindode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.logindode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.loginpassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.loginpassword)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.businessId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

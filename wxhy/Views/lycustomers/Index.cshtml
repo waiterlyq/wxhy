@@ -1,0 +1,141 @@
+﻿@model IEnumerable<wxhy.Models.lycustomer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.businessId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.openid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nickname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sex)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.city)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.province)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.language)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.headimgurl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.suscribetime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.unionid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.remark)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.groupid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tagidlist)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.csttype)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.storeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.interestproduct)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.referees)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.businessId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.openid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nickname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sex)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.city)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.province)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.language)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.headimgurl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.suscribetime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.unionid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.remark)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.groupid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tagidlist)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.csttype)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.storeId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.interestproduct)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.referees)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.cstId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.cstId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.cstId })
+        </td>
+    </tr>
+}
+
+</table>

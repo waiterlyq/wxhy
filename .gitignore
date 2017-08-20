@@ -8,7 +8,7 @@
 *.user
 *.userosscache
 *.sln.docstates
-
+*.config
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -20,7 +20,7 @@
 x64/
 x86/
 bld/
-[Bb]in/
+
 [Oo]bj/
 [Ll]og/
 
@@ -161,7 +161,7 @@ PublishScripts/
 # NuGet Packages
 *.nupkg
 # The packages folder can be ignored because of Package Restore
-**/packages/*
+
 # except build/, which is used as an MSBuild target.
 !**/packages/build/
 # Uncomment if necessary however generally it will be regenerated when needed
@@ -228,6 +228,7 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+Uploads/
 
 # GhostDoc plugin setting file
 *.GhostDoc.xml
@@ -280,6 +281,7 @@ __pycache__/
 
 # Telerik's JustMock configuration file
 *.jmconfig
+
 
 # BizTalk build output
 *.btp.cs
