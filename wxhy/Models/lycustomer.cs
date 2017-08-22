@@ -24,14 +24,14 @@ namespace wxhy.Models
         public string province { get; set; }
         public string language { get; set; }
         public string headimgurl { get; set; }
-        public string suscribetime { get; set; }
+        public string subscribetime { get; set; }
         public string unionid { get; set; }
         public string remark { get; set; }
         public string groupid { get; set; }
         public string tagidlist { get; set; }
         public Nullable<int> csttype { get; set; }
         public string address { get; set; }
-        public Nullable<int> storeId { get; set; }
+        public Nullable<int> store { get; set; }
         public string interestproduct { get; set; }
         public string referees { get; set; }
     }

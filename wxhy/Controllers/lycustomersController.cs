@@ -46,7 +46,7 @@ namespace wxhy.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "cstId,businessId,openid,nickname,sex,city,country,province,language,headimgurl,suscribetime,unionid,remark,groupid,tagidlist,csttype,address,storeId,interestproduct,referees")] lycustomer lycustomer)
+        public ActionResult Create([Bind(Include = "cstId,businessId,openid,nickname,sex,city,country,province,language,headimgurl,subscribetime,unionid,remark,groupid,tagidlist,csttype,address,store,interestproduct,referees")] lycustomer lycustomer)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace wxhy.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "cstId,businessId,openid,nickname,sex,city,country,province,language,headimgurl,suscribetime,unionid,remark,groupid,tagidlist,csttype,address,storeId,interestproduct,referees")] lycustomer lycustomer)
+        public ActionResult Edit([Bind(Include = "cstId,businessId,openid,nickname,sex,city,country,province,language,headimgurl,subscribetime,unionid,remark,groupid,tagidlist,csttype,address,store,interestproduct,referees")] lycustomer lycustomer)
         {
             if (ModelState.IsValid)
             {

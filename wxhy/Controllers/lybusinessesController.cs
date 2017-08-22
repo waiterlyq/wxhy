@@ -46,7 +46,7 @@ namespace wxhy.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "businessId,businessname,logindode,loginpassword")] lybusiness lybusiness)
+        public ActionResult Create([Bind(Include = "businessId,businessname,logincode,loginpassword")] lybusiness lybusiness)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace wxhy.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "businessId,businessname,logindode,loginpassword")] lybusiness lybusiness)
+        public ActionResult Edit([Bind(Include = "businessId,businessname,logincode,loginpassword")] lybusiness lybusiness)
         {
             if (ModelState.IsValid)
             {

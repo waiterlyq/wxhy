@@ -16,7 +16,7 @@ namespace wxhy.Models
     {
         public int businessId { get; set; }
         public string businessname { get; set; }
-        public string logindode { get; set; }
+        public string logincode { get; set; }
         public string loginpassword { get; set; }
     }
 }

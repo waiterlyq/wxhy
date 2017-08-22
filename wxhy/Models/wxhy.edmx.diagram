@@ -5,10 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="c0d1ef54daf54310b7041a2422200df2" Name="Diagram1">
-        <EntityTypeShape EntityType="wxhyModel.lybusiness" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="wxhyModel.lycustomer" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="wxhyModel.lyproduct" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="wxhyModel.lystore" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="wxhyModel.lybusiness" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="wxhyModel.lyproduct" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="wxhyModel.lystore" Width="1.5" PointX="3.75" PointY="3.75" />
+        <EntityTypeShape EntityType="wxhyModel.lycustomer" Width="1.5" PointX="0.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
