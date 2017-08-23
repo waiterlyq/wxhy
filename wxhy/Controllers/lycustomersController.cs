@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Wxlib;
 using wxhy.Models;
 
 namespace wxhy.Controllers
@@ -41,6 +42,24 @@ namespace wxhy.Controllers
             return View();
         }
 
+
+        public ActionResult Create(WxUserInfo wu)
+        {
+            return View(GetLyCustomer(wu));
+        }
+
+        public lycustomer GetLyCustomer(WxUserInfo wu)
+        {
+            lycustomer lyc = new lycustomer();
+            lyc.openid = wu.openid;
+            lyc.nickname = wu.nickname;
+            lyc.sex = wu.sex;
+            lyc.province = wu.province;
+            lyc.city = wu.city;
+            lyc.country = wu.country;
+            lyc.headimgurl = wu.headimgurl;
+            return lyc;
+        }
         // POST: lycustomers/Create
         // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。

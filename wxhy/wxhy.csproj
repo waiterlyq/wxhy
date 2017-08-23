@@ -90,6 +90,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Wxlib">
+      <HintPath>..\..\DecisionSupport\DSWeb\bin\Wxlib.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -115,6 +118,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-navlist.css" />
+    <Content Include="Content\bootstrap-navlist.min.css" />
     <Content Include="Content\bootstrap-table.css" />
     <Content Include="Content\bootstrap-table.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -140,9 +145,6 @@
       <DependentUpon>wxhy.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Models\wxhy.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -212,6 +214,7 @@
     <Compile Include="Controllers\lycustomersController.cs" />
     <Compile Include="Controllers\lyproductsController.cs" />
     <Compile Include="Controllers\lystoresController.cs" />
+    <Compile Include="Controllers\WxController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -271,6 +274,7 @@
     <Content Include="Views\lystores\Details.cshtml" />
     <Content Include="Views\lystores\Edit.cshtml" />
     <Content Include="Views\lystores\Index.cshtml" />
+    <Content Include="Views\Wx\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
