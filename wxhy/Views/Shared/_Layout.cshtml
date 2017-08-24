@@ -3,77 +3,70 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>德行家会员管理</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap-navlist.min.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .nav-list {
+            padding-top: 0px;
+            padding-left: 0px;
+            padding-bottom: 0px;
+            padding-right: 15px;
+            margin:0px;
+            height: 100%;
+            background-color: rgb(63,68,86);
+        }
+        .li-Title{
+            padding:0px;
+            margin:0px;
+            height:50px;
+            background-color:
+        }
+        .Main{
+            padding:0px;
+            margin:0px;
+            height:100%;
+        }
+
+        body, html {
+            padding: 0px;
+            margin: 0px;
+            height: 100%;
+        }
+    </style>
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav"></ul>
+<body >
+    <div class="Main container-fluid">
+        <div class="col-md-2 nav-list">
+            <ul>
+                <li class="card-view">
+                    <button class="btn btn-large btn-block btn-primary" type="button">系统设置</button>
+                </li>
+                <li class="card-view">
+                    <button class="btn btn-large btn-block btn-primary" type="button">系统设置</button>
+                </li>
+                <li class="card-view">
+                    <button class="btn btn-large btn-block btn-primary" type="button">系统设置</button>
+                </li>
+                <li class="card-view">
+                    <button class="btn btn-large btn-block btn-primary" type="button">系统设置</button>
+                </li>
+                <li class="card-view">
+                    <button class="btn btn-large btn-block btn-primary" type="button">系统设置</button>
+                </li>
+                <li class="card-view">
+                    <button class="btn btn-large btn-block btn-primary" type="button">系统设置</button>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-10">
+            <div>
+                @RenderBody()
             </div>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="nav col-md-12">
-            <ul class="nav-list">
-                <li class="active">
-                    <a href="index.html">
-                        <i class="icon-dashboard"></i>
-                        <span class="btn-block"> 控制台 </span>
-                    </a>
-                </li>
-
-            </ul>
-            <ul class="nav-list">
-                <li class="active">
-                    <a href="index.html">
-                        <i class="icon-dashboard"></i>
-                        <span class="menu-text"> 控制台 </span>
-                    </a>
-                </li>
-
-            </ul>
-            <ul class="nav-list">
-                <li class="active">
-                    <a href="index.html">
-                        <i class="icon-dashboard"></i>
-                        <span class="menu-text"> 控制台 </span>
-                    </a>
-                </li>
-
-            </ul>
-            <ul class="nav-list">
-                <li class="active">
-                    <a href="index.html">
-                        <i class="icon-dashboard"></i>
-                        <span class="menu-text"> 控制台 </span>
-                    </a>
-                </li>
-
-            </ul>
-        </div>
-    </div>
-
-    <div class="container body-content col-md-9">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-
     <script src="~/Scripts/jquery-3.1.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
