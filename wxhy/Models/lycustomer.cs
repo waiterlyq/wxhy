@@ -34,5 +34,6 @@ namespace wxhy.Models
         public Nullable<int> store { get; set; }
         public string interestproduct { get; set; }
         public string referees { get; set; }
+        public string name { get; set; }
     }
 }

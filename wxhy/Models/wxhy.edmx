@@ -19,6 +19,7 @@
             <PropertyRef Name="cstId" />
           </Key>
           <Property Name="cstId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" />
           <Property Name="businessId" Type="int" />
           <Property Name="openid" Type="varchar" MaxLength="100" />
           <Property Name="nickname" Type="varchar" MaxLength="45" />
@@ -124,6 +125,7 @@
           <Property Name="store" Type="Int32" />
           <Property Name="interestproduct" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
           <Property Name="referees" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -164,6 +166,7 @@
           <EntitySetMapping Name="lycustomer">
             <EntityTypeMapping TypeName="wxhyModel.lycustomer">
               <MappingFragment StoreEntitySet="lycustomer">
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="referees" ColumnName="referees" />
                 <ScalarProperty Name="interestproduct" ColumnName="interestproduct" />
                 <ScalarProperty Name="store" ColumnName="store" />

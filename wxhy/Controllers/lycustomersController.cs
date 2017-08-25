@@ -48,6 +48,12 @@ namespace wxhy.Controllers
             return View(GetLyCustomer(wu));
         }
 
+        public JsonResult GetCstList(int limit, int offset)
+        {
+            var total = db.lycustomer.ToList().Count;
+            var rows = db.lycustomer.ToList().Skip(offset).Take(limit).ToList();
+            return Json(new { total = total, rows = rows }, JsonRequestBehavior.AllowGet);
+        }
         public lycustomer GetLyCustomer(WxUserInfo wu)
         {
             lycustomer lyc = new lycustomer();
