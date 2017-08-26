@@ -20,6 +20,13 @@ namespace wxhy.Controllers
             return View(db.lyproduct.ToList());
         }
 
+        public JsonResult GetProList(int limit, int offset)
+        {
+            var total = db.lyproduct.ToList().Count;
+            var rows = db.lyproduct.ToList().Skip(offset).Take(limit).ToList();
+            return Json(new { total = total, rows = rows }, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: lyproducts/Details/5
         public ActionResult Details(int? id)
         {
@@ -46,7 +53,7 @@ namespace wxhy.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "proId,businessId,name,remark")] lyproduct lyproduct)
+        public ActionResult Create([Bind(Include = "proId,code,businessId,name,remark")] lyproduct lyproduct)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +85,7 @@ namespace wxhy.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "proId,businessId,name,remark")] lyproduct lyproduct)
+        public ActionResult Edit([Bind(Include = "proId,code,businessId,name,remark")] lyproduct lyproduct)
         {
             if (ModelState.IsValid)
             {
@@ -90,19 +97,23 @@ namespace wxhy.Controllers
         }
 
         // GET: lyproducts/Delete/5
-        public ActionResult Delete(int? id)
+        public string ProDelete(int? id)
         {
-            if (id == null)
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                lyproduct lyproduct = db.lyproduct.Find(id);
+                db.lyproduct.Remove(lyproduct);
+                db.SaveChanges();
+                return "OK";
             }
-            lyproduct lyproduct = db.lyproduct.Find(id);
-            if (lyproduct == null)
+            catch
             {
-                return HttpNotFound();
+                return "NO";
             }
-            return View(lyproduct);
+            
         }
+
+
 
         // POST: lyproducts/Delete/5
         [HttpPost, ActionName("Delete")]

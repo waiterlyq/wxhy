@@ -20,6 +20,13 @@ namespace wxhy.Controllers
             return View(db.lystore.ToList());
         }
 
+        public JsonResult GetStoreList(int limit, int offset)
+        {
+            var total = db.lystore.ToList().Count;
+            var rows = db.lystore.ToList().Skip(offset).Take(limit).ToList();
+            return Json(new { total = total, rows = rows }, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: lystores/Details/5
         public ActionResult Details(int? id)
         {
@@ -46,7 +53,7 @@ namespace wxhy.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "storeId,businessId,name,remark")] lystore lystore)
+        public ActionResult Create([Bind(Include = "storeId,businessId,address,name,remark")] lystore lystore)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +85,7 @@ namespace wxhy.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "storeId,businessId,name,remark")] lystore lystore)
+        public ActionResult Edit([Bind(Include = "storeId,businessId,address,name,remark")] lystore lystore)
         {
             if (ModelState.IsValid)
             {
@@ -102,6 +109,21 @@ namespace wxhy.Controllers
                 return HttpNotFound();
             }
             return View(lystore);
+        }
+
+        public string StoreDelete(int? id)
+        {
+            try
+            {
+                lystore lystore = db.lystore.Find(id);
+                db.lystore.Remove(lystore);
+                db.SaveChanges();
+                return "OK";
+            }
+            catch
+            {
+                return "NO";
+            }
         }
 
         // POST: lystores/Delete/5

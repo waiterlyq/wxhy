@@ -16,6 +16,7 @@ namespace wxhy.Models
     {
         public int proId { get; set; }
         public Nullable<int> businessId { get; set; }
+        public string code { get; set; }
         public string name { get; set; }
         public string remark { get; set; }
     }

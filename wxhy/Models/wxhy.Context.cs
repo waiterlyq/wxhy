@@ -26,8 +26,8 @@ namespace wxhy.Models
         }
     
         public virtual DbSet<lybusiness> lybusiness { get; set; }
+        public virtual DbSet<lycustomer> lycustomer { get; set; }
         public virtual DbSet<lyproduct> lyproduct { get; set; }
         public virtual DbSet<lystore> lystore { get; set; }
-        public virtual DbSet<lycustomer> lycustomer { get; set; }
     }
 }

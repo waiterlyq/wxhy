@@ -148,8 +148,8 @@
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Models\wxhy.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>wxhy.Context.cs</LastGenOutput>
       <DependentUpon>wxhy.edmx</DependentUpon>
+      <LastGenOutput>wxhy.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\wxhy.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

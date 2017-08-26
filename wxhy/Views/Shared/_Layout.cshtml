@@ -31,18 +31,17 @@
             font-size: large;
         }
 
-        .nav-header
-        {
-            padding:0px;
-            margin:0px;
-            background-color:white;
+        .nav-header {
+            padding: 0px;
+            margin: 0px;
+            background-color: white;
         }
 
-        .panel-body
-        {
-            padding:15px;
-            background-color:white;
+        .panel-body {
+            padding: 15px;
+            background-color: white;
         }
+
         .Main {
             padding: 0px;
             margin: 0px;
@@ -58,36 +57,54 @@
             .list-group-item:hover {
                 background-color: rgb(63,68,86);
             }
-
+        .h1{
+            color:black;
+        }
         body, html {
             padding: 0px;
             margin: 0px;
             height: 100%;
-            background:rgb(231,232,235);
+            background: rgb(231,232,235);
         }
     </style>
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script type="text/javascript">
+        function liclick(i) {
+            debugger;
+            switch (i) {
+                case 1:
+                    window.location.href = "/lycustomers";
+                    break;
+                case 2:
+                    window.location.href = "/lystores";
+                    break;
+                case 3:
+                    window.location.href = "/lyproducts";
+                    break;
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="Main container-fluid">
 
-        <div class="col-md-2 nav-list">
+        <div class="col-md-1 nav-list">
             <ul class="list-group">
-                <li class="list-group-item">
+                <li class="list-group-item" onclick="liclick(1)">
                     <span class="glyphicon glyphicon-user"></span>
                     <span>用户管理</span>
                 </li>
-                <li class="list-group-item">
+                <li class="list-group-item" onclick="liclick(2)">
                     <span class="glyphicon glyphicon-share"></span>
                     <span>店家管理</span>
                 </li>
-                <li class="list-group-item">
+                <li class="list-group-item" onclick="liclick(3)">
                     <span class="glyphicon glyphicon-shopping-cart"></span>
                     <span>产品管理</span>
                 </li>
             </ul>
         </div>
-        <div class="col-md-10 Main">
+        <div class="col-md-11 Main">
             <div class="col-md-12 nav-header">
                 <div class="h1">德行家</div>
             </div>

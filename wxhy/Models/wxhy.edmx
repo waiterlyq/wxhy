@@ -46,6 +46,7 @@
           </Key>
           <Property Name="proId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="businessId" Type="int" />
+          <Property Name="code" Type="varchar" MaxLength="45" />
           <Property Name="name" Type="varchar" MaxLength="45" />
           <Property Name="remark" Type="varchar" MaxLength="5000" />
         </EntityType>
@@ -57,6 +58,7 @@
           <Property Name="businessId" Type="int" />
           <Property Name="name" Type="varchar" MaxLength="45" />
           <Property Name="remark" Type="varchar" MaxLength="5000" />
+          <Property Name="address" Type="varchar" MaxLength="400" />
         </EntityType>
         <EntityContainer Name="wxhyModelStoreContainer">
           <EntitySet Name="lybusiness" EntityType="Self.lybusiness" Schema="wxhy" store:Type="Tables" />
@@ -68,12 +70,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="wxhyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="wxhyEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="lybusiness" EntityType="wxhyModel.lybusiness" />
-          <EntitySet Name="lyproduct" EntityType="wxhyModel.lyproduct" />
-          <EntitySet Name="lystore" EntityType="wxhyModel.lystore" />
-          <EntitySet Name="lycustomer" EntityType="wxhyModel.lycustomer" />
-        </EntityContainer>
         <EntityType Name="lybusiness">
           <Key>
             <PropertyRef Name="businessId" />
@@ -83,29 +79,12 @@
           <Property Name="logincode" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="loginpassword" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="lyproduct">
-          <Key>
-            <PropertyRef Name="proId" />
-          </Key>
-          <Property Name="proId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="businessId" Type="Int32" />
-          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="remark" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="lystore">
-          <Key>
-            <PropertyRef Name="storeId" />
-          </Key>
-          <Property Name="storeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="businessId" Type="Int32" />
-          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="remark" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="lycustomer">
           <Key>
             <PropertyRef Name="cstId" />
           </Key>
           <Property Name="cstId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="businessId" Type="Int32" />
           <Property Name="openid" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="nickname" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
@@ -125,68 +104,95 @@
           <Property Name="store" Type="Int32" />
           <Property Name="interestproduct" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
           <Property Name="referees" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="lyproduct">
+          <Key>
+            <PropertyRef Name="proId" />
+          </Key>
+          <Property Name="proId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="businessId" Type="Int32" />
+          <Property Name="code" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="remark" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="lystore">
+          <Key>
+            <PropertyRef Name="storeId" />
+          </Key>
+          <Property Name="storeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="businessId" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="remark" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="lybusiness" EntityType="Self.lybusiness" />
+          <EntitySet Name="lycustomer" EntityType="Self.lycustomer" />
+          <EntitySet Name="lyproduct" EntityType="Self.lyproduct" />
+          <EntitySet Name="lystore" EntityType="Self.lystore" />
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="wxhyModelStoreContainer" CdmEntityContainer="wxhyEntities">
+        <EntityContainerMapping StorageEntityContainer="wxhyModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="lybusiness">
             <EntityTypeMapping TypeName="wxhyModel.lybusiness">
               <MappingFragment StoreEntitySet="lybusiness">
-                <ScalarProperty Name="loginpassword" ColumnName="loginpassword" />
-                <ScalarProperty Name="logincode" ColumnName="logincode" />
+                <ScalarProperty Name="businessId" ColumnName="businessId" />
                 <ScalarProperty Name="businessname" ColumnName="businessname" />
-                <ScalarProperty Name="businessId" ColumnName="businessId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="lyproduct">
-            <EntityTypeMapping TypeName="wxhyModel.lyproduct">
-              <MappingFragment StoreEntitySet="lyproduct">
-                <ScalarProperty Name="remark" ColumnName="remark" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="businessId" ColumnName="businessId" />
-                <ScalarProperty Name="proId" ColumnName="proId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="lystore">
-            <EntityTypeMapping TypeName="wxhyModel.lystore">
-              <MappingFragment StoreEntitySet="lystore">
-                <ScalarProperty Name="remark" ColumnName="remark" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="businessId" ColumnName="businessId" />
-                <ScalarProperty Name="storeId" ColumnName="storeId" />
+                <ScalarProperty Name="logincode" ColumnName="logincode" />
+                <ScalarProperty Name="loginpassword" ColumnName="loginpassword" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="lycustomer">
             <EntityTypeMapping TypeName="wxhyModel.lycustomer">
               <MappingFragment StoreEntitySet="lycustomer">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="referees" ColumnName="referees" />
-                <ScalarProperty Name="interestproduct" ColumnName="interestproduct" />
-                <ScalarProperty Name="store" ColumnName="store" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="csttype" ColumnName="csttype" />
-                <ScalarProperty Name="tagidlist" ColumnName="tagidlist" />
-                <ScalarProperty Name="groupid" ColumnName="groupid" />
-                <ScalarProperty Name="remark" ColumnName="remark" />
-                <ScalarProperty Name="unionid" ColumnName="unionid" />
-                <ScalarProperty Name="subscribetime" ColumnName="subscribetime" />
-                <ScalarProperty Name="headimgurl" ColumnName="headimgurl" />
-                <ScalarProperty Name="language" ColumnName="language" />
-                <ScalarProperty Name="province" ColumnName="province" />
-                <ScalarProperty Name="country" ColumnName="country" />
-                <ScalarProperty Name="city" ColumnName="city" />
-                <ScalarProperty Name="sex" ColumnName="sex" />
-                <ScalarProperty Name="nickname" ColumnName="nickname" />
-                <ScalarProperty Name="openid" ColumnName="openid" />
-                <ScalarProperty Name="businessId" ColumnName="businessId" />
                 <ScalarProperty Name="cstId" ColumnName="cstId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="businessId" ColumnName="businessId" />
+                <ScalarProperty Name="openid" ColumnName="openid" />
+                <ScalarProperty Name="nickname" ColumnName="nickname" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="province" ColumnName="province" />
+                <ScalarProperty Name="language" ColumnName="language" />
+                <ScalarProperty Name="headimgurl" ColumnName="headimgurl" />
+                <ScalarProperty Name="subscribetime" ColumnName="subscribetime" />
+                <ScalarProperty Name="unionid" ColumnName="unionid" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="groupid" ColumnName="groupid" />
+                <ScalarProperty Name="tagidlist" ColumnName="tagidlist" />
+                <ScalarProperty Name="csttype" ColumnName="csttype" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="store" ColumnName="store" />
+                <ScalarProperty Name="interestproduct" ColumnName="interestproduct" />
+                <ScalarProperty Name="referees" ColumnName="referees" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lyproduct">
+            <EntityTypeMapping TypeName="wxhyModel.lyproduct">
+              <MappingFragment StoreEntitySet="lyproduct">
+                <ScalarProperty Name="proId" ColumnName="proId" />
+                <ScalarProperty Name="businessId" ColumnName="businessId" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lystore">
+            <EntityTypeMapping TypeName="wxhyModel.lystore">
+              <MappingFragment StoreEntitySet="lystore">
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="storeId" ColumnName="storeId" />
+                <ScalarProperty Name="businessId" ColumnName="businessId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
