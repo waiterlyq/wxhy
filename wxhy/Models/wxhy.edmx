@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="wxhyModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="wxhyModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="lybusiness">
           <Key>
             <PropertyRef Name="businessId" />
@@ -36,9 +36,10 @@
           <Property Name="tagidlist" Type="varchar" MaxLength="45" />
           <Property Name="csttype" Type="int" />
           <Property Name="address" Type="varchar" MaxLength="200" />
-          <Property Name="store" Type="int" />
+          <Property Name="store" Type="varchar" MaxLength="50" />
           <Property Name="interestproduct" Type="varchar" MaxLength="5000" />
           <Property Name="referees" Type="varchar" MaxLength="45" />
+          <Property Name="integral" Type="int" />
         </EntityType>
         <EntityType Name="lyproduct">
           <Key>
@@ -57,8 +58,8 @@
           <Property Name="storeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="businessId" Type="int" />
           <Property Name="name" Type="varchar" MaxLength="45" />
-          <Property Name="remark" Type="varchar" MaxLength="5000" />
           <Property Name="address" Type="varchar" MaxLength="400" />
+          <Property Name="remark" Type="varchar" MaxLength="5000" />
         </EntityType>
         <EntityContainer Name="wxhyModelStoreContainer">
           <EntitySet Name="lybusiness" EntityType="Self.lybusiness" Schema="wxhy" store:Type="Tables" />
@@ -66,7 +67,8 @@
           <EntitySet Name="lyproduct" EntityType="Self.lyproduct" Schema="wxhy" store:Type="Tables" />
           <EntitySet Name="lystore" EntityType="Self.lystore" Schema="wxhy" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="wxhyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -101,9 +103,10 @@
           <Property Name="tagidlist" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="csttype" Type="Int32" />
           <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="store" Type="Int32" />
+          <Property Name="store" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="interestproduct" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
           <Property Name="referees" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="integral" Type="Int32" />
         </EntityType>
         <EntityType Name="lyproduct">
           <Key>
@@ -122,8 +125,8 @@
           <Property Name="storeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="businessId" Type="Int32" />
           <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="remark" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
           <Property Name="address" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="remark" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="lybusiness" EntityType="Self.lybusiness" />
@@ -171,6 +174,7 @@
                 <ScalarProperty Name="store" ColumnName="store" />
                 <ScalarProperty Name="interestproduct" ColumnName="interestproduct" />
                 <ScalarProperty Name="referees" ColumnName="referees" />
+                <ScalarProperty Name="integral" ColumnName="integral" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -188,10 +192,10 @@
           <EntitySetMapping Name="lystore">
             <EntityTypeMapping TypeName="wxhyModel.lystore">
               <MappingFragment StoreEntitySet="lystore">
-                <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="storeId" ColumnName="storeId" />
                 <ScalarProperty Name="businessId" ColumnName="businessId" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="remark" ColumnName="remark" />
               </MappingFragment>
             </EntityTypeMapping>

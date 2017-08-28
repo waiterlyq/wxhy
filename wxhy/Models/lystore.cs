@@ -17,7 +17,7 @@ namespace wxhy.Models
         public int storeId { get; set; }
         public Nullable<int> businessId { get; set; }
         public string name { get; set; }
-        public string remark { get; set; }
         public string address { get; set; }
+        public string remark { get; set; }
     }
 }

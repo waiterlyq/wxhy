@@ -32,8 +32,9 @@ namespace wxhy.Models
         public string tagidlist { get; set; }
         public Nullable<int> csttype { get; set; }
         public string address { get; set; }
-        public Nullable<int> store { get; set; }
+        public string store { get; set; }
         public string interestproduct { get; set; }
         public string referees { get; set; }
+        public Nullable<int> integral { get; set; }
     }
 }

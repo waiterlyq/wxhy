@@ -43,10 +43,10 @@ namespace wxhy.Controllers
         }
 
 
-        public ActionResult Create(WxUserInfo wu)
-        {
-            return View(GetLyCustomer(wu));
-        }
+        //public ActionResult Create(WxUserInfo wu)
+        //{
+        //    return View(GetLyCustomer(wu));
+        //}
 
         public JsonResult GetCstList(int limit, int offset)
         {
