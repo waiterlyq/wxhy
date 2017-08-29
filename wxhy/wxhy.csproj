@@ -139,18 +139,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <EntityDeploy Include="Models\wxhy.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>wxhy.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\wxhy.edmx.diagram">
-      <DependentUpon>wxhy.edmx</DependentUpon>
-    </Content>
-    <Content Include="Scripts\bootstrap-select.js" />
-    <Content Include="Scripts\bootstrap-select.js.map" />
-    <Content Include="Content\bootstrap-select.css.map" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Image\dxjlogo-01.png" />
     <Content Include="Models\wxhy.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>wxhy.edmx</DependentUpon>
@@ -161,6 +150,18 @@
       <DependentUpon>wxhy.edmx</DependentUpon>
       <LastGenOutput>wxhy.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\bootstrap-select.js" />
+    <Content Include="Scripts\bootstrap-select.js.map" />
+    <Content Include="Content\bootstrap-select.css.map" />
+    <EntityDeploy Include="Models\wxhy.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>wxhy.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\wxhy.edmx.diagram">
+      <DependentUpon>wxhy.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap-select.min.js" />
@@ -353,6 +354,7 @@
     <Content Include="Views\lystores\Edit.cshtml" />
     <Content Include="Views\lystores\Index.cshtml" />
     <Content Include="Views\Wx\Index.cshtml" />
+    <Content Include="Views\lycustomers\RegisterSuccess.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

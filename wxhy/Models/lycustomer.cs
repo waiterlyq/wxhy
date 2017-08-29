@@ -36,5 +36,8 @@ namespace wxhy.Models
         public string interestproduct { get; set; }
         public string referees { get; set; }
         public Nullable<int> integral { get; set; }
+        public Nullable<int> storeId { get; set; }
+        public string interestproductIdlist { get; set; }
+        public string cell_phonenumber { get; set; }
     }
 }

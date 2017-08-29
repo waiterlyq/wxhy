@@ -40,6 +40,9 @@
           <Property Name="interestproduct" Type="varchar" MaxLength="5000" />
           <Property Name="referees" Type="varchar" MaxLength="45" />
           <Property Name="integral" Type="int" />
+          <Property Name="storeId" Type="int" />
+          <Property Name="interestproductIdlist" Type="varchar" MaxLength="5000" />
+          <Property Name="cell-phonenumber" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="lyproduct">
           <Key>
@@ -107,6 +110,9 @@
           <Property Name="interestproduct" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
           <Property Name="referees" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="integral" Type="Int32" />
+          <Property Name="storeId" Type="Int32" />
+          <Property Name="interestproductIdlist" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="cell_phonenumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="lyproduct">
           <Key>
@@ -175,6 +181,9 @@
                 <ScalarProperty Name="interestproduct" ColumnName="interestproduct" />
                 <ScalarProperty Name="referees" ColumnName="referees" />
                 <ScalarProperty Name="integral" ColumnName="integral" />
+                <ScalarProperty Name="storeId" ColumnName="storeId" />
+                <ScalarProperty Name="interestproductIdlist" ColumnName="interestproductIdlist" />
+                <ScalarProperty Name="cell_phonenumber" ColumnName="cell-phonenumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

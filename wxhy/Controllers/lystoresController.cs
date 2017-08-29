@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 using wxhy.Models;
 
 namespace wxhy.Controllers
@@ -18,6 +19,11 @@ namespace wxhy.Controllers
         public ActionResult Index()
         {
             return View(db.lystore.ToList());
+        }
+
+        public string GetStoresList()
+        {
+            return JsonConvert.SerializeObject(db.lystore.ToList());
         }
 
         public JsonResult GetStoreList(int limit, int offset)

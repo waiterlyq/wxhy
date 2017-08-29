@@ -20,7 +20,7 @@ namespace wxhy.Controllers
             }
             WxOpenIdAt woa = WxUtil.GetOpenIdAccess_Token(strcode);
             WxUserInfo wu = WxUtil.GetWxUserInfo(woa);
-            return RedirectToAction("lycustomers", "Create", new { wu = wu });
+            return RedirectToAction("Create", "lycustomers", new { wu = wu });
         }
 
     }

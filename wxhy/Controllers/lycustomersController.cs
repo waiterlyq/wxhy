@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Wxlib;
+using Newtonsoft.Json;
 using wxhy.Models;
 
 namespace wxhy.Controllers
@@ -37,16 +38,17 @@ namespace wxhy.Controllers
         }
 
         // GET: lycustomers/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-
-        //public ActionResult Create(WxUserInfo wu)
+        //public ActionResult Create()
         //{
-        //    return View(GetLyCustomer(wu));
+        //    lycustomer lyc = new lycustomer();
+        //    return View(lyc);
         //}
+
+
+        public ActionResult Create(WxUserInfo wu)
+        {
+            return View(GetLyCustomer(wu));
+        }
 
         public JsonResult GetCstList(int limit, int offset)
         {
@@ -66,6 +68,20 @@ namespace wxhy.Controllers
             lyc.headimgurl = wu.headimgurl;
             return lyc;
         }
+
+        public string SaveCst(string cst)
+        {
+            lycustomer lyc = JsonConvert.DeserializeObject<lycustomer>(cst);
+            db.lycustomer.Add(lyc);
+            db.SaveChanges();
+            return "success";
+        }
+
+        public ActionResult RegisterSuccess()
+        {
+            return View();
+        }
+
         // POST: lycustomers/Create
         // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
