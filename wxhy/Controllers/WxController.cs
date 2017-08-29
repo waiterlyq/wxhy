@@ -14,12 +14,16 @@ namespace wxhy.Controllers
         public ActionResult Index()
         {
             string strcode = Request.QueryString["code"];
-            if (!string.IsNullOrEmpty(strcode))
+            if (string.IsNullOrEmpty(strcode))
             {
-                return null;
+                return HttpNotFound();
             }
             WxOpenIdAt woa = WxUtil.GetOpenIdAccess_Token(strcode);
             WxUserInfo wu = WxUtil.GetWxUserInfo(woa);
+            if(wu==null)
+            {
+                return HttpNotFound();
+            }
             return RedirectToAction("Create", "lycustomers", new { wu = wu });
         }
 
