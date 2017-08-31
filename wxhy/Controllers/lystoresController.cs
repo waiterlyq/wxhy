@@ -11,6 +11,7 @@ using wxhy.Models;
 
 namespace wxhy.Controllers
 {
+    [Authentication]
     public class lystoresController : Controller
     {
         private wxhyEntities db = new wxhyEntities();

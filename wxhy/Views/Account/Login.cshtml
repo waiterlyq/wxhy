@@ -1,0 +1,117 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>德行家登录</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrapValidator.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrapValidator.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var oval = new ValidateObject();
+            var oBtn = new BtnObject();
+            oval.Init();
+            oBtn.Init();
+        })
+        var BtnObject = function () {
+            var oBtn = new Object();
+            oBtn.Init = function () {
+                $("#loginForm").submit(function () {
+                    var bs = {
+                        logincode: $("#LoginCode").val(),
+                        loginpassword: $("#LoginPassword").val()
+                    }
+                    $.ajax({
+                        type: "post",
+                        url: '/Account/doLogin',
+                        data: { bs: JSON.stringify(bs) },
+                        success: function (msg) {
+                            if (msg == "success") {
+                                window.location.href = '@ViewData["returnUrl"]';
+                            }
+                            else {
+                                alert("登录失败");
+                            }
+                        },
+                        error: function () {
+
+                        },
+                        complete: function () {
+
+                        }
+
+                    });
+                    return false;
+                })
+            }
+            return oBtn;
+        }
+
+        var ValidateObject = function () {
+            var oValidate = new Object();
+            oValidate.Init = function () {
+                $("#loginForm").bootstrapValidator({
+                    fields: {/*验证*/
+                        LoginCode: {/*键名username和input name值对应*/
+                            message: 'The username is not valid',
+                            validators: {
+                                notEmpty: {/*非空提示*/
+                                    message: '用户名不能为空'
+                                }
+                            }
+                        },
+                        LoginPassword: {
+                            message: '密码无效',
+                            validators: {
+                                notEmpty: {
+                                    message: '密码不能为空'
+                                }
+                            }
+                        }
+                    }
+                });
+            };
+            return oValidate;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <form id="loginForm">
+            <div class="row col-md-12">
+                <div class="panel-body col-md-8 col-md-offset-2">
+                    <div class="row col-md-12">
+                        <div class="form-group col-md-8 col-md-offset-2">
+                            <h1 class="text-center">德行家登录</h1>
+                        </div>
+                    </div>
+                    <div class="row col-md-12">
+                        <div class="form-group col-md-8 col-md-offset-2">
+                            <input type="text" id="LoginCode" name="LoginCode" class="form-control col-md-8 col-md-offset-2" placeholder="登录名" />
+                        </div>
+                    </div>
+                    <div class="row col-md-12">
+                        <div class="form-group col-md-8 col-md-offset-2">
+                            <input type="password" id="LoginPassword" name="LoginPassword" class="form-control col-md-8 col-md-offset-2" placeholder="密码" />
+                        </div>
+                    </div>
+                    <div class="row col-md-12">
+                        <div class="form-group col-md-8 col-md-offset-2">
+                            <input type="submit" value="登录" class="btn btn-primary col-md-8 col-md-offset-2" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

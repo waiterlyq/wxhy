@@ -15,13 +15,13 @@ namespace wxhy.Controllers
     public class lycustomersController : Controller
     {
         private wxhyEntities db = new wxhyEntities();
-
+        [Authentication]
         // GET: lycustomers
         public ActionResult Index()
         {
             return View(db.lycustomer.ToList());
         }
-
+        [Authentication]
         // GET: lycustomers/Details/5
         public ActionResult Details(int? id)
         {
@@ -44,18 +44,19 @@ namespace wxhy.Controllers
         //    return View(lyc);
         //}
 
-
+       
         public ActionResult Create(WxUserInfo wu)
         {
             return View(GetLyCustomer(wu));
         }
-
+        [Authentication]
         public JsonResult GetCstList(int limit, int offset)
         {
             var total = db.lycustomer.ToList().Count;
             var rows = db.lycustomer.ToList().Skip(offset).Take(limit).ToList();
             return Json(new { total = total, rows = rows }, JsonRequestBehavior.AllowGet);
         }
+       
         public lycustomer GetLyCustomer(WxUserInfo wu)
         {
             lycustomer lyc = new lycustomer();
@@ -98,7 +99,7 @@ namespace wxhy.Controllers
 
             return View(lycustomer);
         }
-
+        [Authentication]
         // GET: lycustomers/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -113,7 +114,7 @@ namespace wxhy.Controllers
             }
             return View(lycustomer);
         }
-
+        [Authentication]
         // POST: lycustomers/Edit/5
         // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
@@ -129,7 +130,7 @@ namespace wxhy.Controllers
             }
             return View(lycustomer);
         }
-
+        [Authentication]
         // GET: lycustomers/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -146,6 +147,7 @@ namespace wxhy.Controllers
         }
 
         // POST: lycustomers/Delete/5
+        [Authentication]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
