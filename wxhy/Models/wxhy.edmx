@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="businessId" />
           </Key>
-          <Property Name="businessId" Type="int" Nullable="false" />
+          <Property Name="businessId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="businessname" Type="varchar" MaxLength="45" />
           <Property Name="logincode" Type="varchar" MaxLength="45" />
           <Property Name="loginpassword" Type="varchar" MaxLength="45" />
@@ -79,7 +79,7 @@
           <Key>
             <PropertyRef Name="businessId" />
           </Key>
-          <Property Name="businessId" Type="Int32" Nullable="false" />
+          <Property Name="businessId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="businessname" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="logincode" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="loginpassword" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />

@@ -16,7 +16,7 @@ namespace wxhy.Models
     {
         public int cstId { get; set; }
         public string name { get; set; }
-        public Nullable<int> businessId { get; set; }
+        public int businessId { get; set; }
         public string openid { get; set; }
         public string nickname { get; set; }
         public Nullable<int> sex { get; set; }
@@ -35,7 +35,7 @@ namespace wxhy.Models
         public string store { get; set; }
         public string interestproduct { get; set; }
         public string referees { get; set; }
-        public Nullable<int> integral { get; set; }
+        public int integral { get; set; }
         public Nullable<int> storeId { get; set; }
         public string interestproductIdlist { get; set; }
         public string cell_phonenumber { get; set; }
