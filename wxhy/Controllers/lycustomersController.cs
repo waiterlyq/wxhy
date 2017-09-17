@@ -45,9 +45,9 @@ namespace wxhy.Controllers
         //}
 
        
-        public ActionResult Create(WxUserInfo wu)
+        public ActionResult Create(string  wujson)
         {
-            return View(GetLyCustomer(wu));
+            return View(GetLyCustomer(wujson));
         }
         [Authentication]
         public JsonResult GetCstList(int limit, int offset)
@@ -57,8 +57,9 @@ namespace wxhy.Controllers
             return Json(new { total = total, rows = rows }, JsonRequestBehavior.AllowGet);
         }
        
-        public lycustomer GetLyCustomer(WxUserInfo wu)
+        public lycustomer GetLyCustomer(string wujson)
         {
+            WxUserInfo wu = JsonConvert.DeserializeObject<WxUserInfo>(wujson);
             lycustomer lyc = new lycustomer();
             lyc.openid = wu.openid;
             lyc.nickname = wu.nickname;

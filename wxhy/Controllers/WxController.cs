@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using wxhy.Models;
 using Wxlib;
+using Newtonsoft.Json;
 
 namespace wxhy.Controllers
 {
@@ -20,11 +21,12 @@ namespace wxhy.Controllers
             }
             WxOpenIdAt woa = WxUtil.GetOpenIdAccess_Token(strcode);
             WxUserInfo wu = WxUtil.GetWxUserInfo(woa);
-            if(wu==null)
+            string wujson = JsonConvert.SerializeObject(wu);
+            if (wu==null)
             {
                 return HttpNotFound();
             }
-            return RedirectToAction("Create", "lycustomers", new { wu = wu });
+            return RedirectToAction("Create", "lycustomers", new { wu = wujson });
         }
 
     }
