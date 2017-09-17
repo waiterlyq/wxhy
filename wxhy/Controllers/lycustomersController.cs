@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Wxlib;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using wxhy.Models;
 
 namespace wxhy.Controllers
@@ -35,6 +36,17 @@ namespace wxhy.Controllers
                 return HttpNotFound();
             }
             return View(lycustomer);
+        }
+
+        public JsonResult SaveIntegral(string cstint)
+        {
+           
+            JObject cstjo = (JObject)JsonConvert.DeserializeObject(cstint);
+            lycustomer lyc = db.lycustomer.Find(int.Parse(cstjo["cstId"].ToString()));
+            lyc.integral = int.Parse(cstjo["integral"].ToString());
+            db.Entry(lyc).State = EntityState.Modified;
+            db.SaveChanges();
+            return Json(new {data="success", status = "success" });
         }
 
         // GET: lycustomers/Create

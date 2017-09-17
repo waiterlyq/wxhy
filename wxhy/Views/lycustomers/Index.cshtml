@@ -46,6 +46,21 @@
                         field: 'name',
                         title: '姓名'
                     }, {
+                        filed: 'integral',
+                        title: '积分',
+                        editable: {
+                            type: 'number',
+                            title: '积分',
+                            validate: function (v) {
+                                if (!v) return '积分不能为空';
+
+                            }
+                        },
+                        formatter: function (value, row, index) {
+                            //看一下回调中第几个是value
+                            return row["integral"].toString();
+                        }
+                    }, {
                         field: 'referees',
                         title: '推荐人'
                     }, {
@@ -54,12 +69,37 @@
                     }, {
                         field: 'store',
                         title: '注册店铺'
-                    }]
+                    }],
+                    onEditableSave: function (field, row, oldValue, $el) {
+                        var cstint = {
+                            cstId: row["cstId"],
+                            integral: row[5]
+                        }
+                        $.ajax({
+                            type: "post",
+                            url: "/lycustomers/SaveIntegral",
+                            data: { cstint: JSON.stringify(cstint) },
+                            dataType: 'JSON',
+                            success: function (data, status) {
+                                if (status == "success") {
+                                    alert('提交数据成功');
+                                    $("#tb_cst").bootstrapTable('refresh');
+                                }
+                            },
+                            error: function () {
+                                alert('编辑失败');
+                            },
+                            complete: function () {
+
+                            }
+
+                        });
+                    }
                 });
             };
             return oTableInit;
         };
-       
+
     </script>
 </head>
 <body>
@@ -71,6 +111,6 @@
             <table id="tb_cst"></table>
         </div>
     </div>
-       
+
 </body>
 </html>
