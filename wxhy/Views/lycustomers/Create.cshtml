@@ -27,7 +27,7 @@
             $("#cstsubmit").click(function () {
                 $(this).attr("disabled", "true"); //设置变灰按钮
                 $("form").submit();//提交表单
-                setTimeout("$('#submit').removeAttr('disabled')", 3000); //设置三秒后提交按钮 显示
+                setTimeout("$('#cstsubmit').removeAttr('disabled')", 3000); //设置三秒后提交按钮 显示
 
             })
         });
