@@ -18,6 +18,7 @@ namespace wxhy.Controllers
         public ActionResult Index()
         {
             string strcode = Request.QueryString["code"];
+            MyLog.writeLog(strcode);
             if (string.IsNullOrEmpty(strcode))
             {
                 return HttpNotFound();
