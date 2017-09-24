@@ -14,6 +14,7 @@ namespace wxhy.Controllers
 {
     public class WxController : Controller
     {
+        private wxhyEntities db = new wxhyEntities();
         // GET: Wx
         public ActionResult Index()
         {
@@ -46,5 +47,14 @@ namespace wxhy.Controllers
             return RedirectToAction("Create", "lycustomers",new { wujson = strReturn });
         }
 
+        public string GetProductsList()
+        {
+            return JsonConvert.SerializeObject(db.lyproduct.ToList());
+        }
+
+        public string GetStoresList()
+        {
+            return JsonConvert.SerializeObject(db.lystore.ToList());
+        }
     }
 }

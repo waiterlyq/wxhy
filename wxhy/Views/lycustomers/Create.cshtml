@@ -26,7 +26,7 @@
             oSelect.ProductInit = function () {
                 $.ajax({
                     type: "post",
-                    url: '/lyproducts/GetProductsList',
+                    url: '/Wx/GetProductsList',
                     success: function (data) {
                         var json = eval(data); //数组
                         $.each(json, function (index, item) {
@@ -47,7 +47,7 @@
             oSelect.StoreInit = function () {
                 $.ajax({
                     type: "post",
-                    url: '/lystores/GetStoresList',
+                    url: '/Wx/GetStoresList',
                     success: function (data) {
                         var json = eval(data); //数组
                         $.each(json, function (index, item) {
