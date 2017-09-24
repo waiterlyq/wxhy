@@ -112,11 +112,6 @@
                     bv.validate();
                     if (bv.isValid())
                     {
-                        if ($("#name").val() == '' || $("#name").val() == undefined || $("#cell_phonenumber").val() == '' || $("#cell_phonenumber").val() == undefined)
-                        {
-                            return;
-
-                        }
                         $.ajax({
                             type: "post",
                             url: '/lycustomers/SaveCst',
