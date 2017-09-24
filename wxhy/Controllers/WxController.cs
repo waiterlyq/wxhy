@@ -46,7 +46,7 @@ namespace wxhy.Controllers
             //{
             //    return HttpNotFound();
             //}
-            strReturn = Encoding.UTF8.GetString(Encoding.Default.GetBytes(strReturn));
+            strReturn = Encoding.UTF8.GetString(Encoding.GetEncoding("ISO-8859-1").GetBytes(strReturn));
             MyLog.writeLog(strReturn);
             return RedirectToAction("Create", "lycustomers",new { wujson = strReturn });
         }
