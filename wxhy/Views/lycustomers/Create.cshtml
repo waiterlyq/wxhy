@@ -80,7 +80,7 @@
         var BtnObject = function () {
             var oBtn = new Object();
             oBtn.Init = function () {
-                
+
                 $("form").submit(function () {
                     var cst = {
                         name: $("#name").val(),
@@ -107,10 +107,16 @@
                         interestproductIdlist: $("#interestproduct").val().join(","),
                         cell_phonenumber: $("#cell_phonenumber").val()
                     };
+
                     var bv = $("#RegisterForm").data("bootstrapValidator");
                     bv.validate();
                     if (bv.isValid())
                     {
+                        if ($("#name").val() == '' || $("#name").val() == undefined || $("#cell_phonenumber").val() == '' || $("#cell_phonenumber").val() == undefined)
+                        {
+                            return;
+
+                        }
                         $.ajax({
                             type: "post",
                             url: '/lycustomers/SaveCst',
