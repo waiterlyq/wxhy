@@ -78,8 +78,10 @@ namespace wxhy.Controllers
        
         public lycustomer GetLyCustomer(string wujson)
         {
-            WxUserInfo wu = JsonConvert.DeserializeObject<WxUserInfo>(wujson);
+            
             lycustomer lyc = new lycustomer();
+            try { 
+            WxUserInfo wu = JsonConvert.DeserializeObject<WxUserInfo>(wujson);
             lyc.openid = wu.openid;
             lyc.nickname = wu.nickname;
             lyc.sex = wu.sex;
@@ -87,6 +89,12 @@ namespace wxhy.Controllers
             lyc.city = wu.city;
             lyc.country = wu.country;
             lyc.headimgurl = wu.headimgurl;
+            }
+            catch(Exception e)
+            {
+                MyLog.writeLog(e.Message, e);
+                throw e;
+            }
             return lyc;
         }
 
