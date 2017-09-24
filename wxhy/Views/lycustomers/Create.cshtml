@@ -10,14 +10,18 @@
     <title>注册客户</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="~/Scripts/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
     <script type="text/javascript" src="~/Scripts/bootstrap-select.min.js"></script>
     <script type="text/javascript" src="~/Scripts/i18n/defaults-zh_CN.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrapValidator.min.js"></script>
     <script type="text/javascript">
         $(function () {
             var oSelect = new SelectObject();
+            var oval = new ValidateObject();
             var oBtn = new BtnObject();
+            oval.Init();
             oSelect.Init();
             oBtn.Init();
         });
@@ -124,6 +128,32 @@
             }
             return oBtn;
         }
+
+        var ValidateObject = function () {
+            var oValidate = new Object();
+            oValidate.Init = function () {
+                $("#RegisterForm").bootstrapValidator({
+                    fields: {/*验证*/
+                        name: {/*键名username和input name值对应*/
+                            validators: {
+                                notEmpty: {/*非空提示*/
+                                    message: '姓名不能为空'
+                                }
+                            }
+                        },
+                        cell_phonenumber: {
+                            validators: {
+                                notEmpty: {
+                                    message: '手机号不能为空'
+                                }
+                            }
+                        }
+                    }
+                });
+            };
+            return oValidate;
+        }
+
         function GetMultiSelectedText(ostr)
         {
             var arr = $("#interestproduct").val();
@@ -138,7 +168,7 @@
     </script>
 </head>
 <body>
-    <form>
+    <form id="RegisterForm">
         @Html.AntiForgeryToken()
         <div class="container-fluid">
             <div class="form-horizontal">
