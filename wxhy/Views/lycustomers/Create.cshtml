@@ -156,57 +156,7 @@
                                 }
                             }
                         }
-                    },  
-                    submitHandler: function(validator, form, submitButton) {  
-                        var cst = {
-                            name: $("#name").val(),
-                            openid: '@Model.openid',
-                            nickname: '@Model.nickname',
-                            sex: '@Model.sex',
-                            city: '@Model.city',
-                            country: '@Model.country',
-                            province: '@Model.province',
-                            language: '@Model.language',
-                            headimgurl: '@Model.headimgurl',
-                            subscribetime: '@Model.subscribetime',
-                            unionid: '@Model.unionid',
-                            remark: '@Model.remark',
-                            groupid: '@Model.groupid',
-                            tagidlist: '@Model.tagidlist',
-                            csttype: '@Model.csttype',
-                            address: '@Model.address',
-                            store: $("#store option[value='" + $("#store").val() + "']").text(),
-                            interestproduct: GetMultiSelectedText("interestproduct"),
-                            referees: $("#referees").val(),
-                            integral: 100,
-                            storeId: $("#store").val(),
-                            interestproductIdlist: $("#interestproduct").val().join(","),
-                            cell_phonenumber: $("#cell_phonenumber").val()
-                        };
-
-                        var bv = $("#RegisterForm").data("bootstrapValidator");
-                        var flag = bv.isValid();
-                        if (flag) {
-                            $('#cstsubmit').attr('onclick', 'javascript:void();');
-                            $.ajax({
-                                type: "post",
-                                url: '/lycustomers/SaveCst',
-                                data: { cst: JSON.stringify(cst) },
-                                success: function (data) {
-                                    alert("注册成功");
-                                    window.location.href = "/lycustomers/RegisterSuccess";
-                                },
-                                error: function () {
-
-                                },
-                                complete: function () {
-
-                                }
-
-                            });
-                        }
-                        return false;
-                }  
+                    } 
                 });
             };
             return oValidate;
