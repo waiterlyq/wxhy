@@ -107,22 +107,27 @@
                         interestproductIdlist: $("#interestproduct").val().join(","),
                         cell_phonenumber: $("#cell_phonenumber").val()
                     };
-                    $.ajax({
-                        type: "post",
-                        url: '/lycustomers/SaveCst',
-                        data: { cst: JSON.stringify(cst)},
-                        success: function (data) {
-                            alert("保存成功");
-                            window.location.href = "/lycustomers/RegisterSuccess";
-                        },
-                        error: function () {
-                            
-                        },
-                        complete: function () {
-   
-                        }
+                    var bv = $("#RegisterForm").data("bootstrapValidator");
+                    bv.validate();
+                    if (bv.isValid())
+                    {
+                        $.ajax({
+                            type: "post",
+                            url: '/lycustomers/SaveCst',
+                            data: { cst: JSON.stringify(cst) },
+                            success: function (data) {
+                                alert("注册成功");
+                                window.location.href = "/lycustomers/RegisterSuccess";
+                            },
+                            error: function () {
 
-                    });
+                            },
+                            complete: function () {
+
+                            }
+
+                        });
+                    }
                     return false;
                 });
             }
