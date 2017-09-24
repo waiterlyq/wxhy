@@ -61,6 +61,11 @@ namespace wxhy.Controllers
         public ActionResult Create(string  wujson)
         {
             MyLog.writeLog(wujson);
+            if(string.IsNullOrEmpty(wujson))
+            {
+                lycustomer lyc = new lycustomer();
+                return View(lyc);
+            }
             return View(GetLyCustomer(wujson));
         }
         [Authentication]
