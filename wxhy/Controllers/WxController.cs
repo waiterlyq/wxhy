@@ -28,24 +28,17 @@ namespace wxhy.Controllers
             string url = @" https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + appid + "&secret=" + appsecret + "&code=" + strcode + "&grant_type=authorization_code ";
             WebClient wc = new WebClient();
             string strReturn = wc.DownloadString(url);
-            if (strReturn.IndexOf("errcode") >-1)
-            {
-                return HttpNotFound();
-            }
             JObject jo = (JObject)JsonConvert.DeserializeObject(strReturn);
-            url = @" https://api.weixin.qq.com/sns/userinfo?access_token=" + jo["access_token"].ToString() + "&openid=" + jo["openid"].ToString() + "&lang=zh_CN ";
-            strReturn = Encoding.UTF8.GetString(wc.DownloadData(url));
-            jo = (JObject)JsonConvert.DeserializeObject(strReturn);
-            if (strReturn.IndexOf("errcode") > -1)
-            {
-                return HttpNotFound();
-            }
-            string strOpenid = jo["access_token"].ToString();
+            string strOpenid = jo["openid"].ToString();
             var cstinfo = from c in db.lycustomer where c.openid == strOpenid select c;
-            if (cstinfo.Count() > 0)
+            MyLog.writeLog(cstinfo.Count().ToString());
+            MyLog.writeLog(strOpenid);
+            if (cstinfo.Count()>0)
             {
                 return RedirectToAction("RegisterSuccess", "lycustomers");
             }
+            url = @" https://api.weixin.qq.com/sns/userinfo?access_token=" + jo["access_token"].ToString() + "&openid=" + jo["openid"].ToString() + "&lang=zh_CN ";
+            strReturn = Encoding.UTF8.GetString(wc.DownloadData(url));
             return RedirectToAction("Create", "lycustomers",new { wujson = strReturn });
         }
 
