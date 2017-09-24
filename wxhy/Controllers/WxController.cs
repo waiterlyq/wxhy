@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using wxhy.Models;
 using Wxlib;
 using Newtonsoft.Json;
+using Loglib;
 
 namespace wxhy.Controllers
 {
@@ -19,10 +20,10 @@ namespace wxhy.Controllers
             {
                 return HttpNotFound();
             }
-            WxOpenIdAt woa = WxUtil.GetOpenIdAccess_Token(strcode);
-            WxUserInfo wu = WxUtil.GetWxUserInfo(woa);
-            string wujson = JsonConvert.SerializeObject(wu);
-            if (wu==null)
+
+            string wujson = WxUtil.GetWxUserInfo(WxUtil.GetOpenIdAccess_Token(strcode));
+            MyLog.writeLog(wujson);
+            if (wujson == null)
             {
                 return HttpNotFound();
             }
