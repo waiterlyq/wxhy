@@ -31,6 +31,7 @@ namespace wxhy.Controllers
             JObject jo = (JObject)JsonConvert.DeserializeObject(strReturn);
             string strOpenid = jo["access_token"].ToString();
             var cstinfo = from c in db.lycustomer where c.openid == strOpenid select c;
+            MyLog.writeLog(cstinfo.Count().ToString());
             if(cstinfo.Count()>0)
             {
                 return RedirectToAction("RegisterSuccess", "lycustomers");
