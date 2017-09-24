@@ -19,9 +19,11 @@
     <script type="text/javascript">
         $(function () {
             var oSelect = new SelectObject();
-            var oval = new ValidateObject();         
+            var oval = new ValidateObject();
+            var oBtn = new BtnObject();
             oval.Init();
             oSelect.Init();
+            oBtn.Init();
         });
         var SelectObject = function () {
             var oSelect = new Object();
@@ -110,7 +112,7 @@
                     var flag = bv.isValid();
                     if (flag)
                     {
-                        $('#cstsubmit').attr('onclick', 'javascript:void();');
+                        $('#areaSelect').attr("disabled", "disabled");
                         $.ajax({
                             type: "post",
                             url: '/lycustomers/SaveCst',
@@ -125,9 +127,10 @@
                             complete: function () {
 
                             }
-
                         });
+                        return false;
                     }
+                    $('#areaSelect').removeAttr("disabled");
                     return false;
                 });
             }
