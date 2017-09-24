@@ -32,12 +32,14 @@ namespace wxhy.Controllers
             string strOpenid = jo["access_token"].ToString();
             var cstinfo = from c in db.lycustomer where c.openid == strOpenid select c;
             MyLog.writeLog(cstinfo.Count().ToString());
-            if(cstinfo.Count()>0)
+            MyLog.writeLog(strOpenid);
+            if (cstinfo.Count()>0)
             {
                 return RedirectToAction("RegisterSuccess", "lycustomers");
             }
             url = @" https://api.weixin.qq.com/sns/userinfo?access_token=" + jo["access_token"].ToString() + "&openid=" + jo["openid"].ToString() + "&lang=zh_CN ";
             strReturn = Encoding.UTF8.GetString(wc.DownloadData(url));
+            MyLog.writeLog(strReturn);
             return RedirectToAction("Create", "lycustomers",new { wujson = strReturn });
         }
 
