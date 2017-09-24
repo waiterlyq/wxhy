@@ -10,6 +10,7 @@ using Wxlib;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using wxhy.Models;
+using Loglib;
 
 namespace wxhy.Controllers
 {
@@ -59,6 +60,7 @@ namespace wxhy.Controllers
        
         public ActionResult Create(string  wujson)
         {
+            MyLog.writeLog(wujson);
             return View(GetLyCustomer(wujson));
         }
         [Authentication]

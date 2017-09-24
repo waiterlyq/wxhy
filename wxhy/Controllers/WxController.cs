@@ -43,7 +43,7 @@ namespace wxhy.Controllers
             //{
             //    return HttpNotFound();
             //}
-            return RedirectToAction("Create", "lycustomers");
+            return RedirectToAction("Create", "lycustomers",new { wujson = strReturn });
         }
 
     }
