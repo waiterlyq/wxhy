@@ -41,13 +41,13 @@ namespace wxhy.Controllers
 
         public JsonResult SaveIntegral(string cstint)
         {
-           
+
             JObject cstjo = (JObject)JsonConvert.DeserializeObject(cstint);
             lycustomer lyc = db.lycustomer.Find(int.Parse(cstjo["cstId"].ToString()));
             lyc.integral = int.Parse(cstjo["integral"].ToString());
             db.Entry(lyc).State = EntityState.Modified;
             db.SaveChanges();
-            return Json(new {data="success", status = "success" });
+            return Json(new { data = "success", status = "success" });
         }
 
         // GET: lycustomers/Create
@@ -57,14 +57,14 @@ namespace wxhy.Controllers
         //    return View(lyc);
         //}
 
-       
-        public ActionResult Create(string  wujson)
+
+        public ActionResult Create(string wujson)
         {
             MyLog.writeLog(wujson);
-            if(string.IsNullOrEmpty(wujson))
+            if (string.IsNullOrEmpty(wujson))
             {
                 lycustomer lyc = new lycustomer();
-                 return View(lyc);
+                return View(lyc);
             }
             return View(GetLyCustomer(wujson));
         }
@@ -75,22 +75,24 @@ namespace wxhy.Controllers
             var rows = db.lycustomer.ToList().Skip(offset).Take(limit).ToList();
             return Json(new { total = total, rows = rows }, JsonRequestBehavior.AllowGet);
         }
-       
+
         public lycustomer GetLyCustomer(string wujson)
         {
-            
+
             lycustomer lyc = new lycustomer();
-            try { 
-            WxUserInfo wu = JsonConvert.DeserializeObject<WxUserInfo>(wujson);
-            lyc.openid = wu.openid;
-            lyc.nickname = wu.nickname;
-            lyc.sex = wu.sex;
-            lyc.province = wu.province;
-            lyc.city = wu.city;
-            lyc.country = wu.country;
-            lyc.headimgurl = wu.headimgurl;
+            JObject jo;
+            try
+            {
+                jo = (JObject)JsonConvert.DeserializeObject(wujson);
+                lyc.openid = jo["openid"].ToString();
+                lyc.nickname = jo["nickname"].ToString();
+                lyc.sex = int.Parse(jo["openid"].ToString());
+                lyc.province = jo["province"].ToString();
+                lyc.city = jo["city"].ToString();
+                lyc.country = jo["country"].ToString();
+                lyc.headimgurl = jo["headimgurl"].ToString();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MyLog.writeLog(e.Message, e);
                 throw e;
