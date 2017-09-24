@@ -29,7 +29,8 @@ namespace wxhy.Controllers
             WebClient wc = new WebClient();
             string strReturn = wc.DownloadString(url);
             JObject jo = (JObject)JsonConvert.DeserializeObject(strReturn);
-            var cstinfo = from c in db.lycustomer where c.openid == jo["access_token"].ToString() select c;
+            string strOpenid = jo["access_token"].ToString();
+            var cstinfo = from c in db.lycustomer where c.openid == strOpenid select c;
             if(cstinfo.Count()>0)
             {
                 return RedirectToAction("RegisterSuccess", "lycustomers");
