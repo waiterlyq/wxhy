@@ -86,7 +86,7 @@ namespace wxhy.Controllers
                 jo = (JObject)JsonConvert.DeserializeObject(wujson);
                 lyc.openid = jo["openid"].ToString();
                 lyc.nickname = jo["nickname"].ToString();
-                lyc.sex = int.Parse(jo["openid"].ToString());
+                lyc.sex = int.Parse(jo["sex"].ToString());
                 lyc.province = jo["province"].ToString();
                 lyc.city = jo["city"].ToString();
                 lyc.country = jo["country"].ToString();
