@@ -8,7 +8,9 @@ using Wxlib;
 using Newtonsoft.Json;
 using System.Configuration;
 using System.Net;
+using System.IO;
 using Loglib;
+using System.Text;
 
 namespace wxhy.Controllers
 {
@@ -37,13 +39,15 @@ namespace wxhy.Controllers
             url = @" https://api.weixin.qq.com/sns/userinfo?access_token=" + woa.access_token + "&openid=" + woa.openid + "&lang=zh_CN ";
             MyLog.writeLog(url);
             strReturn = wc.DownloadString(url);
-            MyLog.writeLog(strReturn);
+            
             //string wujson = WxUtil.GetWxUserInfo(WxUtil.GetOpenIdAccess_Token(strcode));
             //MyLog.writeLog(wujson);
             //if (wujson == null)
             //{
             //    return HttpNotFound();
             //}
+            strReturn = Encoding.UTF8.GetString(Encoding.Default.GetBytes(strReturn));
+            MyLog.writeLog(strReturn);
             return RedirectToAction("Create", "lycustomers",new { wujson = strReturn });
         }
 
