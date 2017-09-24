@@ -30,7 +30,6 @@ namespace wxhy.Controllers
             string realPassword = db.lybusiness.Where(a => a.logincode == loginbs.logincode).First<lybusiness>().loginpassword;
             if (loginbs.loginpassword == realPassword)
             {
-
                 HttpCookie newcookie = new HttpCookie("usercode");
                 newcookie.Value = loginbs.logincode;
                 newcookie.Expires = DateTime.Now.AddDays(5);
