@@ -64,7 +64,7 @@ namespace wxhy.Controllers
             if(string.IsNullOrEmpty(wujson))
             {
                 lycustomer lyc = new lycustomer();
-                return View(lyc);
+                 return View(lyc);
             }
             return View(GetLyCustomer(wujson));
         }
@@ -81,6 +81,7 @@ namespace wxhy.Controllers
             WxUserInfo wu = JsonConvert.DeserializeObject<WxUserInfo>(wujson);
             lycustomer lyc = new lycustomer();
             lyc.openid = wu.openid;
+            lyc.nickname = wu.nickname;
             lyc.sex = wu.sex;
             lyc.province = wu.province;
             lyc.city = wu.city;

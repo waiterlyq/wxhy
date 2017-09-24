@@ -40,13 +40,14 @@ namespace wxhy.Controllers
             MyLog.writeLog(url);
             strReturn = wc.DownloadString(url);
             
+
             //string wujson = WxUtil.GetWxUserInfo(WxUtil.GetOpenIdAccess_Token(strcode));
             //MyLog.writeLog(wujson);
             //if (wujson == null)
             //{
             //    return HttpNotFound();
             //}
-            strReturn = Encoding.UTF8.GetString(Encoding.Default.GetBytes(strReturn));
+            strReturn = Encoding.UTF8.GetString(wc.DownloadData(url));
             MyLog.writeLog(strReturn);
             return RedirectToAction("Create", "lycustomers",new { wujson = strReturn });
         }
