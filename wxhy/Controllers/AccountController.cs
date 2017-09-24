@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using wxhy.Models;
 using Newtonsoft.Json;
+using Loglib;
+
 namespace wxhy.Controllers
 {
     public class AccountController : Controller
